@@ -8,6 +8,9 @@ class StudentsGroup {
         this.students = students
     }
 
+
+
+
     fun filterByPredicate(condition: (Student) -> Boolean): List<Student> {
         if (this::students.isInitialized) {
             return students.filter(condition)
@@ -24,31 +27,16 @@ fun main() {
                 firstName = "John",
                 lastName = "Doe",
                 averageRate = 2.3,
-                age = 0,
-                city = "No city mentioned",
-                specialization = "No specialization mentioned",
-                prevEducation = "No previous education",
-                middleName = "No middle name"
             ),
             Student(
                 firstName = "John",
                 lastName = "Doea",
                 averageRate = 4.0,
-                age = 10,
-                city = "No city mentioned",
-                specialization = "No specialization mentioned",
-                prevEducation = "No previous education",
-                middleName = "No middle name"
             ),
             Student(
                 firstName = "Johna1",
                 lastName = "Doea232",
                 averageRate = 4.0,
-                age = 20,
-                city = "No city mentioned",
-                specialization = "No specialization mentioned",
-                prevEducation = "No previous education",
-                middleName = "No middle name"
             ),
         )
     )
