@@ -10,8 +10,3 @@ object PowFactory {
         return { valueToPow -> valueToPow.toDouble().pow(pow).toInt()}
     }
 }
-
-
-fun main() {
-    print(PowFactory.buildPowFunction(2)(100))
-}
