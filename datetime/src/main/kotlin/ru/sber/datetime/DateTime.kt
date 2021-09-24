@@ -1,6 +1,10 @@
 package ru.sber.datetime
 
-import java.time.LocalDateTime
+import java.time.*
+import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.Collections.sort
+import kotlin.collections.ArrayList
 
 // 1.
 fun getZonesWithNonDivisibleByHourOffset(): Set<String> {
@@ -29,8 +33,8 @@ fun getZonesWithNonDivisibleByHourOffset(): Set<String> {
 fun getLastInMonthDayWeekList(year: Int): List<String> {
     val lastInMonthDayWeekList: MutableList<String> = mutableListOf()
 
-    for (i in 1..12) {
-        val yearMonth: YearMonth = YearMonth.of(year, i)
+    for (month in Month.values()) {
+        val yearMonth: YearMonth = YearMonth.of(year, month)
         val lastDay: LocalDate = yearMonth.atEndOfMonth()
         lastInMonthDayWeekList.add(lastDay.dayOfWeek.toString())
     }
@@ -40,8 +44,8 @@ fun getLastInMonthDayWeekList(year: Int): List<String> {
 // 3.
 fun getNumberOfFridayThirteensInYear(year: Int): Int {
     var counter: Int = 0
-    for (i in 1..12) {
-        val yearMonth: YearMonth = YearMonth.of(year, i)
+    for (month in Month.values()) {
+        val yearMonth: YearMonth = YearMonth.of(year, month)
         val thirteenthDay: LocalDate = yearMonth.atDay(13)
         if (thirteenthDay.dayOfWeek == DayOfWeek.FRIDAY) {
             counter++
@@ -54,7 +58,8 @@ fun getNumberOfFridayThirteensInYear(year: Int): Int {
 
 // 4.
 fun getFormattedDateTime(dateTime: LocalDateTime): String {
-    return dateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"))
+    return dateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm", Locale.US))
+    // в данном случае нет разницы между Locale.US и Locale.English, по формулировке в задании выбрал US
 }
 
 
